@@ -1,57 +1,53 @@
-package one.digitalinnovation.gof;
+package com.exemplo.gof;
 
-import one.digitalinnovation.gof.facade.Facade;
-import one.digitalinnovation.gof.singleton.SingletonEager;
-import one.digitalinnovation.gof.singleton.SingletonLazy;
-import one.digitalinnovation.gof.singleton.SingletonLazyHolder;
-import one.digitalinnovation.gof.strategy.Comportamento;
-import one.digitalinnovation.gof.strategy.ComportamentoAgressivo;
-import one.digitalinnovation.gof.strategy.ComportamentoDefensivo;
-import one.digitalinnovation.gof.strategy.ComportamentoNormal;
-import one.digitalinnovation.gof.strategy.Robo;
+import com.exemplo.gof.facade.Facade;
+import com.exemplo.gof.singleton.SingletonEager;
+import com.exemplo.gof.singleton.SingletonLazy;
+import com.exemplo.gof.singleton.SingletonLazyHolder;
+import com.exemplo.gof.strategy.Comportamento;
+import com.exemplo.gof.strategy.ComportamentoAgressivo;
+import com.exemplo.gof.strategy.ComportamentoDefensivo;
+import com.exemplo.gof.strategy.ComportamentoNormal;
+import com.exemplo.gof.strategy.Robo;
 
-public class Test {
+public class Main {
 
-	public static void main(String[] args) {
-		
-		// Singleton
-		
-		SingletonLazy lazy = SingletonLazy.getInstancia();
-		System.out.println(lazy);
-		lazy = SingletonLazy.getInstancia();
-		System.out.println(lazy);
-		
-		SingletonEager eager = SingletonEager.getInstancia();
-		System.out.println(eager);
-		eager = SingletonEager.getInstancia();
-		System.out.println(eager);
-		
-		SingletonLazyHolder lazyHolder = SingletonLazyHolder.getInstancia();
-		System.out.println(lazyHolder);
-		lazyHolder = SingletonLazyHolder.getInstancia();
-		System.out.println(lazyHolder);
-		
-		// Strategy
-		
-		Comportamento defensivo = new ComportamentoDefensivo();
-		Comportamento normal = new ComportamentoNormal();
-		Comportamento agressivo = new ComportamentoAgressivo();
-		
-		Robo robo = new Robo();
-		robo.setComportamento(normal);
-		robo.mover();
-		robo.mover();
-		robo.setComportamento(defensivo);
-		robo.mover();
-		robo.setComportamento(agressivo);
-		robo.mover();
-		robo.mover();
-		robo.mover();
-		
-		// Facade
-		
-		Facade facade = new Facade();
-		facade.migrarCliente("Venilton", "14801788");
-	}
+    public static void main(String[] args) {
 
+        // Teste Singleton
+        SingletonLazy lazy = SingletonLazy.getInstance();
+        System.out.println(lazy);
+        lazy = SingletonLazy.getInstance();
+        System.out.println(lazy);
+
+        SingletonEager eager = SingletonEager.getInstance();
+        System.out.println(eager);
+        eager = SingletonEager.getInstance();
+        System.out.println(eager);
+
+        SingletonLazyHolder holder = SingletonLazyHolder.getInstance();
+        System.out.println(holder);
+        holder = SingletonLazyHolder.getInstance();
+        System.out.println(holder);
+
+        // Teste Strategy
+        Comportamento normal = new ComportamentoNormal();
+        Comportamento defensivo = new ComportamentoDefensivo();
+        Comportamento agressivo = new ComportamentoAgressivo();
+
+        Robo robo = new Robo();
+        robo.definirComportamento(normal);
+        robo.executarMovimento();
+        robo.executarMovimento();
+        robo.definirComportamento(defensivo);
+        robo.executarMovimento();
+        robo.definirComportamento(agressivo);
+        robo.executarMovimento();
+        robo.executarMovimento();
+        robo.executarMovimento();
+
+        // Teste Facade
+        Facade facade = new Facade();
+        facade.migrarCliente("Carlos", "14801788");
+    }
 }

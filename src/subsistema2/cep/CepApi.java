@@ -1,22 +1,24 @@
-package subsistema2.cep;
+package com.exemplo.subsistema2.cep;
 
 public class CepApi {
 
-	private static CepApi instancia = new CepApi();
+    private static final CepApi instance = new CepApi();
 
-	private CepApi() {
-		super();
-	}
+    private CepApi() {
+        // Construtor privado para impedir instanciamento
+    }
 
-	public static CepApi getInstancia() {
-		return instancia;
-	}
-	
-	public String recuperarCidade(String cep) {
-		return "Araraquara";
-	}
-	
-	public String recuperarEstado(String cep) {
-		return "SP";
-	}
+    public static CepApi getInstance() {
+        return instance;
+    }
+
+    public String recuperarCidade(String cep) {
+        // Simulação de lógica para buscar a cidade a partir do CEP
+        return "São Paulo";
+    }
+
+    public String recuperarEstado(String cep) {
+        // Simulação de lógica para buscar o estado a partir do CEP
+        return "SP";
+    }
 }

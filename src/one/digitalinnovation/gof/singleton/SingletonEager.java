@@ -1,19 +1,17 @@
-package one.digitalinnovation.gof.singleton;
+package com.exemplo.gof.singleton;
 
 /**
- * Singleton "apressado".
- * 
- * @author falvojr
+ * Singleton "ansioso".
  */
 public class SingletonEager {
 
-	private static SingletonEager instancia = new SingletonEager();
-	
-	private SingletonEager() {
-		super();
-	}
-	
-	public static SingletonEager getInstancia() {
-		return instancia;
-	}
+    private static final SingletonEager instance = new SingletonEager();
+
+    private SingletonEager() {
+        // Construtor privado para impedir instanciamento
+    }
+
+    public static SingletonEager getInstance() {
+        return instance;
+    }
 }

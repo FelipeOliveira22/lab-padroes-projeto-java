@@ -1,22 +1,20 @@
-package one.digitalinnovation.gof.singleton;
+package com.exemplo.gof.singleton;
 
 /**
- * Singleton "preguiçoso".
- * 
- * @author falvojr
+ * Singleton "preguiÃ§oso".
  */
 public class SingletonLazy {
 
-	private static SingletonLazy instancia;
-	
-	private SingletonLazy() {
-		super();
-	}
-	
-	public static SingletonLazy getInstancia() {
-		if (instancia == null) {
-			instancia = new SingletonLazy();
-		}
-		return instancia;
-	}
+    private static SingletonLazy instance;
+
+    private SingletonLazy() {
+        // Construtor privado para impedir instanciamento
+    }
+
+    public static synchronized SingletonLazy getInstance() {
+        if (instance == null) {
+            instance = new SingletonLazy();
+        }
+        return instance;
+    }
 }
